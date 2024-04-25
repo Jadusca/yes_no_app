@@ -7,13 +7,20 @@ class ChatProvider extends ChangeNotifier {
   final ScrollController chatScrollController = ScrollController();
 
   List<Message> messageList = [
-    Message(text: 'Hola amor!', fromWho: FromWho.me),
-    Message(
-      text: 'Ya regresaste del trabajo?',
-      fromWho: FromWho.me),
+    // Message(text: 'Hola amor!', fromWho: FromWho.me),
+    // Message(
+    //   text: 'Ya regresaste del trabajo?',
+    //   fromWho: FromWho.me),
   ];
 
+  int _messageCount = 0;
+
   Future<void> sendMessage(String  text) async {
+
+    _messageCount++; // Incrementa el contador de mensajes
+    print('Mensaje enviado: $_messageCount ');
+
+    if (text.isEmpty) return; //Para evitar que se muestren mensajes vacios
 
     //El mensaje siempre va ser de "me" (o mio) por que yo usuario siempre sera que envie el mensaje
     final newMessage = Message(text: text, fromWho: FromWho.me);
