@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:yes_no_app/domain/entities/message.dart';
+import 'package:yes_no_app/infrastructure/models/yes_no_model.dart';
 
 class GetYesNoAnswer{
 
@@ -11,11 +12,11 @@ class GetYesNoAnswer{
     //Almacenar la petición GET en una variable
     final response = await _dio.get('https://yesno.wtf/api');
 
-    //final yesNoModel = YesNoModel.fromJsonMap(response.data);
+    final yesNoModel = YesNoModel.fromJsonMap(response.data);
 
     //Generar un error para obtener una respuesta con un breakpoint
-    throw UnimplementedError();
-    //yesNoModel.toMessageEntity();
+    //throw UnimplementedError();
+    return yesNoModel.toMessageEntity();
 
   }
 }
