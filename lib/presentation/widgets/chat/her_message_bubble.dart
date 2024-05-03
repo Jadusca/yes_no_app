@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:yes_no_app/domain/entities/message.dart';
 
 class HerMessageBubble extends StatelessWidget {
@@ -35,7 +36,12 @@ class HerMessageBubble extends StatelessWidget {
 
         _ImageBubble(message.imageUrl!),
 
-        const SizedBox(height: 10)
+        const SizedBox(height: 10),
+        Text(
+          DateFormat('HH:mm')
+              .format(message.sentTime), // Muestra la hora debajo del mensaje
+          style: const TextStyle(fontSize: 12, color: Colors.grey),
+        ),
       ],
     );
   }

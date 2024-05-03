@@ -25,7 +25,8 @@ class YesNoModel {
     //Condicion para darle el valor el mensaje
     text: answer == 'yes' ? 'Sí' : (answer == 'maybe' ? 'maybe' : 'No'),
     fromWho: FromWho.hers,
-    imageUrl:image
+    imageUrl:image,
+    sentTime: DateTime.now()
     );
 
 }

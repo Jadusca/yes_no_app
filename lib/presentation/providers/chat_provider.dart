@@ -10,10 +10,10 @@ class ChatProvider extends ChangeNotifier {
   final getYesNoAnswer = GetYesNoAnswer();
 
   List<Message> messageList = [
-    // Message(text: 'Hola amor!', fromWho: FromWho.me),
-    // Message(
-    //   text: 'Ya regresaste del trabajo?',
-    //   fromWho: FromWho.me),
+    Message(text: 'Hola amor!', fromWho: FromWho.me, sentTime: DateTime.now()),
+    Message(
+      text: 'Ya regresaste del trabajo?',
+      fromWho: FromWho.me, sentTime: DateTime.now()),
   ];
 
   int _messageCount = 0;
@@ -25,8 +25,15 @@ class ChatProvider extends ChangeNotifier {
 
     if (text.isEmpty) return; //Para evitar que se muestren mensajes vacios
 
+    // Capturar la hora actual
+    final currentTime = DateTime.now();
+
     //El mensaje siempre va ser de "me" (o mio) por que yo usuario siempre sera que envie el mensaje
-    final newMessage = Message(text: text, fromWho: FromWho.me);
+    final newMessage = Message(
+      text: text,
+      fromWho: FromWho.me,
+      sentTime: currentTime,
+      );
     // Agregar un mensaje a lista
     messageList.add(newMessage);
     //Detecta si el usuario hizo una pregunta para desencadenar la respuesta "ella"
